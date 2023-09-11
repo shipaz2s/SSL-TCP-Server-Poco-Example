@@ -6,9 +6,6 @@
 #include <Poco/Net/SecureServerSocket.h>
 #include <Poco/Net/SecureStreamSocket.h>
 
-#include <Poco/Net/SocketImpl.h>
-#include <Poco/Net/SecureSocketImpl.h>
-
 #include <string>
 #include <iostream>
 
