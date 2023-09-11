@@ -1,0 +1,30 @@
+1. Создание ключа для подписи корнего сертификата
+openssl genpkey -algorithm RSA -out rootCA.key
+
+2. Создание корнего сертификата (распространяется клиентам)
+openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt
+
+Корневой сертификат и ключ используются для создания новых сертификатов и ключей
+
+3. Создание приватного ключа (для нового сертификата)
+openssl genpkey -algorithm RSA -out test.key
+
+4. Создание файла с запросом на подпись сертификата, подписанного ключом tesk.key
+openssl req -new -key test.key -out test.csr
+
+CN - ip сервера для strict verification
+openssl req -new -sha256 -key test.key -subj "/C=US/ST=CA/O=MyOrg, Inc./CN=mydomain.com" -out test.csr
+
+5. Создание сертификата
+openssl x509 -req -in test.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out test.crt -sha256
+openssl x509 -req -in test.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out test.crt -days 500 -sha256
+
+Итог:
+rootCA.key — приватный ключ Центра Сертификации, должен храниться в секрете в CA
+rootCA.crt — публичный корневой сертификат Центра Сертификации — должен быть установлен на всех пользовательских устройствах
+test.key — приватный ключ, должен храниться в секрете на сервере. Указывает в конфигурации при настройке сервера
+test.csr — запрос на подпись сертификата, после создания сертификата этот файл не нужен, его можно удалить
+test.crt — сертификат. Указывает в конфигурации при настройке сервера, не является секретным.
+
+Конвертировать crt в pem:
+openssl x509 -in rootCA.crt -out rootCA.pem

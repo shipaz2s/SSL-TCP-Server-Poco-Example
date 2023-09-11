@@ -20,11 +20,10 @@ if (NOT DEFINED CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
-message(STATUS "POCO_DEBUG_DIR ${POCO_DEBUG_DIR}")
-
 find_package(Poco REQUIRED COMPONENTS Data DataSQLite Foundation Net NetSSL Util PATHS ${POCO_DIR})
 
 add_executable(main main.cpp)
 
 target_include_directories(main PRIVATE ${POCO_DIR}/include)
+target_link_directories(main PRIVATE ${OPENSSL_ROOT_DIR}/lib)
 target_link_libraries(main PRIVATE Poco::Foundation Poco::Net Poco::NetSSL)

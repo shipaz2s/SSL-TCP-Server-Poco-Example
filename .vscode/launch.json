@@ -14,7 +14,7 @@
 				{
 					"name": "PATH",
 					// "value": "${env:PATH}:D:\\dev\\poco\\Debug\\bin"
-					"value": "${env:PATH};D:\\dev\\poco\\Debug\\bin"
+					"value": "${env:PATH};D:\\dev\\poco\\Debug\\bin;D:\\dev\\OpenSSL-Win64"
 				}
 			],
 			"console": "externalTerminal",

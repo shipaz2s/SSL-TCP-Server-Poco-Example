@@ -8,12 +8,11 @@
 			"name": "RC-msvc_x64-debug",
 			"displayName": "RadioControl MSVC_x64 Debug",
 			"description": "MSVC_x64",
-			"inherits": "msvc_x64-Debug",
+			"inherits": "msvc_x64-debug",
 			"cacheVariables": {
-				"fftw3_dir": "D:/Development/LIBS/fftw3",
+				"fftw3_dir": "D:/dev/fftw3",
 				"qwt_dir": "D:/dev/Qwt-6.2.0-Mingw32",
 				"POCO_DIR": "D:/dev/poco/Debug",
-				"Qt5_DIR": "",
 				"OPENSSL_ROOT_DIR": "D:/dev/OpenSSL-Win64"
 			}
 		},
@@ -21,9 +20,9 @@
 			"name": "RC-msvc_x64-release",
 			"displayName": "RadioControl MSVC_x64 Release",
 			"description": "MSVC_x64",
-			"inherits": "msvc_x64-Release",
+			"inherits": "msvc_x64-release",
 			"cacheVariables": {
-				"fftw3_dir": "D:/Development/LIBS/fftw3",
+				"fftw3_dir": "D:/dev/fftw3",
 				"qwt_dir": "D:/dev/Qwt-6.2.0-Mingw32",
 				"POCO_DIR": "D:/dev/poco/Release",
 				"OPENSSL_ROOT_DIR": "D:/dev/OpenSSL-Win64"
@@ -35,16 +34,15 @@
 			"name": "RC-msvc_x64-debug",
 			"displayName": "RadioControl MSVC_x64 Debug",
 			"configurePreset": "RC-msvc_x64-debug",
-			"jobs": 15,
-			"environment": {
-				"PATH": "$env{PATH};D:\\dev\\poco\\Debug\\bin"
-			}
+			"jobs": 11,
+			"configuration": "Debug"
 		},
 		{
 			"name": "RC-msvc_x64-release",
 			"displayName": "RadioControl MSVC_x64 Release",
 			"configurePreset": "RC-msvc_x64-release",
-			"jobs": 15
+			"jobs": 11,
+			"configuration": "Release"
 		}
 	]
 }
